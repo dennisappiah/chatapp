@@ -14,9 +14,11 @@ server.on("connection", (socket) => {
 
   const clientId = clients.length + 1;
 
+  // broadcasting message to everyone when someone joins the chatroom
   clients.map((client) => {
     client.socket.write(`User ${clientId} joined`);
   });
+
   // sending id to the client
   socket.write(`id-${clientId}`);
 
